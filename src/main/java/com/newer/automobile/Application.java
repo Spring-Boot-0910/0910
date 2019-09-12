@@ -10,10 +10,10 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 @MapperScan("com.newer.automobile.mapper")
 @EnableRedisHttpSession
 @EnableCaching  //开启缓存
-public class AutomobileApplication {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(AutomobileApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
 }
