@@ -103,7 +103,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/api/auth/**",
                         "/api/verifyCode/**",
-                        "/api/global_json"
+                        "/login/loginUser",
+                        "/login/**"
                 ).permitAll()
                 // secure other api
                 .anyRequest().authenticated();
