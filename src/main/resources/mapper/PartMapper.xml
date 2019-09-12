@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newer.automobile.mapper.PartMapper">
+    
+    <select id="partByPartType" resultType="com.newer.automobile.domain.Part">
+        select * from part
+        <where>
+            1=1
+            <if test="partType!=null and partType!=''">
+                and partType like concat('%',concat(#{partType},'%'))
+            </if>
+        </where>
+    </select>
+
+</mapper>
