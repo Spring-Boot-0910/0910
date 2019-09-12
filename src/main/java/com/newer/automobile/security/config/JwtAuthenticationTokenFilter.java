@@ -69,5 +69,5 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             }
         }
         filterChain.doFilter(request,response);//允许请求继续访问
-    }
+}
 }
