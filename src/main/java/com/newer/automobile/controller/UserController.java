@@ -59,7 +59,7 @@ public class UserController {
     public int regUser(@RequestParam("name") String name,@RequestParam("email") String email,@RequestParam("pwd") String pwd){
         System.out.println("CCC"+name+"---"+email+"---"+pwd);
         String password = encoder.encode(pwd);
-            return userService.regUser(name,email,password);
+        return userService.regUser(name,email,password);
     }
 
 }

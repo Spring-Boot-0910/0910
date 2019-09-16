@@ -22,4 +22,13 @@ public class PartService {
         return partMapper.partByPartType(partType);
     }
 
+    /**
+     * 根据id查询
+     * @param pid
+     * @return
+     */
+    public int partById(Integer pid){
+        return partMapper.partById(pid);
+    }
+
 }
