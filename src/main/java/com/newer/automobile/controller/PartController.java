@@ -31,4 +31,22 @@ public class PartController {
         return new ResponseEntity<>(list,HttpStatus.OK);
     }
 
+    /**
+     * 根据id查询
+     * @param pid
+     * @return
+     */
+    @RequestMapping("partById")
+    public ResponseEntity<?> partById(@RequestParam("pid")String pid){
+        Integer id = 0;
+        if (pid!=null){
+            id = Integer.parseInt(pid);
+        }
+        int fluRows = partService.partById(id);
+        if (fluRows==0){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(fluRows,HttpStatus.OK);
+    }
+
 }
