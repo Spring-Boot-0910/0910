@@ -1,9 +1,7 @@
 package com.newer.automobile.controller;
 
-import com.newer.automobile.domain.Users;
 import com.newer.automobile.security.domain.JwtAuthenticationResponse;
 import com.newer.automobile.security.domain.JwtAuthenticationResquest;
-import com.newer.automobile.security.domain.JwtUser;
 import com.newer.automobile.service.UserService;
 import com.newer.automobile.utils.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
