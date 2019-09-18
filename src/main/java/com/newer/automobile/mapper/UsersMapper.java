@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 
-public interface UsersMapper {
+public interface UsersMapper  {
     //根据用户名查询
     public Users loadUserByUsername(@Param("uname") String uname);
 
@@ -18,5 +18,8 @@ public interface UsersMapper {
     @Select("select uname,uemail,upwd,uphone from users where uemail=#{email} and upwd=#{pwd}")
     public Users queryLogin(@Param("email") String email,@Param("pwd") String pwd);
 
+    //根据邮箱查询密码
+    @Select("select upwd from users where uemail = #{uemail}")
+    public Users queryPwd(@Param("uemail")String uemail);
 }
 
