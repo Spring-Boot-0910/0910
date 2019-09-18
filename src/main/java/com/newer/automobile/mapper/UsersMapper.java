@@ -4,7 +4,6 @@ import com.newer.automobile.domain.Users;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import org.springframework.security.core.parameters.P;
 
 
 public interface UsersMapper {

@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/brand")
+@RequestMapping("/notLogin")
 public class BrandController {
     @Autowired
     private BrandService brandService;
 
     @PostMapping("/queryBrand")
     public List<Brand> queryBrand(){
+        System.out.println(brandService.queryBrand());
         return brandService.queryBrand();
     }
 }
