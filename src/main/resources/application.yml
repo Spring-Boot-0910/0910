@@ -1,12 +1,12 @@
 server:
-  port: 8087
+  port: 8086
   servlet:
     context-path:
 spring:
   datasource:
     username: root
     password: 123456
-    url: jdbc:mysql://localhost/newerstu?useLL=false&serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=true
+    url: jdbc:mysql://127.0.0.1:3306/newerstu?useSSL=false&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
   redis:
     host: 127.0.0.1
     port: 6379
@@ -35,5 +35,5 @@ jwt:
   expiration: 604800
   header: Authorization
   tokenHead: bearer
-  path: /auth
+  path: /loginUser
   refresh: /refresh
