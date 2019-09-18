@@ -1,5 +1,6 @@
 package com.newer.automobile.controller;
 
+import com.newer.automobile.domain.Email;
 import com.newer.automobile.security.domain.JwtAuthenticationResponse;
 import com.newer.automobile.security.domain.JwtAuthenticationResquest;
 import com.newer.automobile.service.UserService;
@@ -16,6 +17,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Random;
 
 
 @RestController
@@ -34,6 +37,7 @@ public class UserController {
     private UserService userService;
     @Autowired
     private PasswordEncoder encoder;
+
     @RequestMapping(value = "${jwt.path}", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationResquest authenticationRequest) throws AuthenticationException {
         UsernamePasswordAuthenticationToken upToken = new UsernamePasswordAuthenticationToken(
@@ -60,4 +64,12 @@ public class UserController {
         return userService.regUser(name,email,password);
     }
 
+    @PostMapping("/email")
+    public void sendSimpleMail( @RequestParam("shoujian")String shoujian){
+        Random random=new Random();
+        int ran = (int)((Math.random()*9+1)*100000);
+        String msg=String.valueOf(ran);
+        Email email=new Email("2469228898@qq.com",shoujian,"验证码为："+msg);
+        userService.email(email);
+    }
 }
