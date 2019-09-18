@@ -3,7 +3,7 @@ package com.newer.automobile.domain;
 import java.io.Serializable;
 import java.util.List;
 
-public class Users  implements Serializable {
+public class Users  implements Serializable{
     private Integer uid;
     private String uname;
     private String uemail;

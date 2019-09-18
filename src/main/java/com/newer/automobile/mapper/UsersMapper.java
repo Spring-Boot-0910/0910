@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.security.core.parameters.P;
 
 
-public interface UsersMapper {
+public interface UsersMapper  {
     //根据用户名查询
     public Users loadUserByUsername(@Param("uname") String uname);
 
