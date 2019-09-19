@@ -25,18 +25,18 @@ public class SiteController {
     //市级
     @RequestMapping("city")
     public ResponseEntity<?> city(@RequestParam("PROVINCE_CODE") String PROVINCE_CODE) {
-        return new ResponseEntity<>(siteService.city(), HttpStatus.OK);
+        return new ResponseEntity<>(siteService.city(PROVINCE_CODE), HttpStatus.OK);
     }
 
     //二级市
     @RequestMapping("area")
     public ResponseEntity<?> area(@RequestParam("CITY_CODE") String CITY_CODE) {
-        return new ResponseEntity<>(siteService.areas(), HttpStatus.OK);
+        return new ResponseEntity<>(siteService.areas(CITY_CODE), HttpStatus.OK);
     }
 
     //街区
     @RequestMapping("street")
     public ResponseEntity<?> street(@RequestParam("AREA_CODE") String AREA_CODE) {
-        return new ResponseEntity<>(siteService.streets(), HttpStatus.OK);
+        return new ResponseEntity<>(siteService.streets(AREA_CODE), HttpStatus.OK);
     }
 }
