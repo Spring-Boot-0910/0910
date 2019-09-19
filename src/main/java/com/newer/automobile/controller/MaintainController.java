@@ -21,18 +21,19 @@ public class MaintainController {
 
     /**
      * 请求服务
+     *
      * @return
      */
     @RequestMapping("/maintainAdd")
-    public ResponseEntity<?> maintainAdd(@RequestParam("mname")String mname,@RequestParam("ucar")String ucar,
-                                         @RequestParam("phone")String phone,@RequestParam("email")String email,
-                                         @RequestParam("Service")String Service,@RequestParam("time")String time){
+    public ResponseEntity<?> maintainAdd(@RequestParam("mname") String mname, @RequestParam("ucar") String ucar,
+                                         @RequestParam("phone") String phone, @RequestParam("email") String email,
+                                         @RequestParam("Service") String Service, @RequestParam("time") String time) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date times = null;
-        if (time!=null){
-            try{
+        if (time != null) {
+            try {
                 times = sdf.parse(time);
-            }catch (ParseException e){
+            } catch (ParseException e) {
                 e.printStackTrace();
             }
         }
@@ -43,12 +44,12 @@ public class MaintainController {
         maintain.setEmail(email);
         maintain.setService(Service);
         maintain.setTime(times);
-        System.out.println("ss:"+mname+",p:"+phone);
+        System.out.println("ss:" + mname + ",p:" + phone);
         int fluRows = maintainService.maintainAdd(maintain);
-        if (fluRows==0){
+        if (fluRows == 0) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(fluRows,HttpStatus.OK);
+        return new ResponseEntity<>(fluRows, HttpStatus.OK);
     }
 
 }

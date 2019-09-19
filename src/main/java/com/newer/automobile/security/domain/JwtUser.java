@@ -60,6 +60,7 @@ public class JwtUser implements UserDetails {
 
     /**
      * 判断账号是否过期
+     *
      * @return
      */
     @JsonIgnore
@@ -70,6 +71,7 @@ public class JwtUser implements UserDetails {
 
     /**
      * 判断账号是否被锁
+     *
      * @return
      */
     @JsonIgnore
@@ -80,6 +82,7 @@ public class JwtUser implements UserDetails {
 
     /**
      * 认证是否过期
+     *
      * @return
      */
     @JsonIgnore

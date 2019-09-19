@@ -12,11 +12,11 @@ public interface UsersMapper  {
 
     //用户注册
     @Insert("insert into users values(null,#{name},#{email},#{pwd},null,1,1,null,null)")
-    public int regUser(@Param("name") String name, @Param("email") String email,@Param("pwd")String pwd);
+    public int regUser(@Param("name") String name, @Param("email") String email, @Param("pwd") String pwd);
 
     //用户登录
     @Select("select uname,uemail,upwd,uphone from users where uemail=#{email} and upwd=#{pwd}")
-    public Users queryLogin(@Param("email") String email,@Param("pwd") String pwd);
+    public Users queryLogin(@Param("email") String email, @Param("pwd") String pwd);
 
     //根据邮箱查询密码
     @Select("select upwd from users where uemail = #{uemail}")

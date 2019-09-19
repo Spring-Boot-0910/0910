@@ -6,7 +6,11 @@ spring:
   datasource:
     username: root
     password: 123456
+<<<<<<< Updated upstream
     url: jdbc:mysql://127.0.0.1:3306/newerstu?useSSL=false&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
+=======
+    url: jdbc:mysql://127.0.0.1:3306/yzy?useSSL=false&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
+>>>>>>> Stashed changes
   redis:
     host: 127.0.0.1
     port: 6379
@@ -26,10 +30,6 @@ spring:
 mybatis:
   type-aliases-package: com.newer.automobile.domain
   mapper-locations: classpath:mapper/*.xml
-#logging:
-#  level:
-#    com.newer.hospital.mapper: debug
-#    org.springframework.security: info
 jwt:
   secret: mySecret
   expiration: 604800

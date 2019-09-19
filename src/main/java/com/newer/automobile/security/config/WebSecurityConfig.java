@@ -40,6 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 配置认证管理构件
+     *
      * @param authenticationManagerBuilder
      * @throws Exception
      */

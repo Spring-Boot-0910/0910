@@ -8,6 +8,7 @@ import java.util.List;
 public interface BrandMapper {
     /**
      * 所有logo图案
+     *
      * @return
      */
     @Select("select * from brand")

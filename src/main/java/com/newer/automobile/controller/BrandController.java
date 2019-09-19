@@ -16,8 +16,12 @@ public class BrandController {
     private BrandService brandService;
 
     @PostMapping("/queryBrand")
+<<<<<<< Updated upstream
     public List<Brand> queryBrand(){
         System.out.println(brandService.queryBrand());
+=======
+    public List<Brand> queryBrand() {
+>>>>>>> Stashed changes
         return brandService.queryBrand();
     }
 }
