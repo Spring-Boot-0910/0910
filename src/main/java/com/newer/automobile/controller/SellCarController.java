@@ -16,20 +16,8 @@ public class SellCarController {
     @Autowired
     private SellCarService sellCarService;
 
-    @RequestMapping("/partByPartType")
-    public ResponseEntity<?> add(@RequestParam("sc1") String sc1,
-                                 @RequestParam("sc2") String sc2,
-                                 @RequestParam("sc3") String sc3,
-                                 @RequestParam("sctime") Date sctime,
-                                 @RequestParam("sckm") Double sckm,
-                                 @RequestParam("expectedPrice") Double expectedPrice,
-                                 @RequestParam("scimg") String scimg,
-                                 @RequestParam("province") String province,
-                                 @RequestParam("city") String city,
-                                 @RequestParam("area") String area,
-                                 @RequestParam("street") String street,
-                                 @RequestParam("message") String message) {
-        SellCar sellCar = new SellCar();
+    @RequestMapping("/sellcar")
+    public ResponseEntity<?> add(SellCar sellCar) {
         return new ResponseEntity<>(sellCarService.add(sellCar), HttpStatus.OK);
 
     }
