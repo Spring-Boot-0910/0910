@@ -11,7 +11,7 @@ public interface MaintainMapper {
      * @param maintain
      * @return
      */
-    @Insert("insert into maintain values(null,#{mname},#{ucar},#{phone},#{email},#{Service},#{time},null.null)")
+    @Insert("insert into maintain values(null,#{mname},#{ucar},#{phone},#{email},#{Service},#{time},null,null)")
     public int maintainAdd(Maintain maintain);
 
 }

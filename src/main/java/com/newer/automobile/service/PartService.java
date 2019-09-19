@@ -15,11 +15,10 @@ public class PartService {
 
     /**
      * 零件模糊查询/查询
-     *
      * @param partType
      * @return
      */
-    public List<Part> partByPartType(String partType) {
+    public List<Part> partByPartType(String partType){
         return partMapper.partByPartType(partType);
     }
 

@@ -19,17 +19,16 @@ public class PartController {
 
     /**
      * 零件模糊查询/查询
-     *
      * @param partType
      * @return
      */
     @RequestMapping("/partByPartType")
-    public ResponseEntity<?> partByPartType(@RequestParam("partType") String partType) {
+    public ResponseEntity<?> partByPartType(@RequestParam("partType")String partType){
         List<Part> list = partService.partByPartType(partType);
-        if (list == null) {
+        if (list==null){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(list, HttpStatus.OK);
+        return new ResponseEntity<>(list,HttpStatus.OK);
     }
 
     /**
