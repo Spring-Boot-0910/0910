@@ -19,27 +19,27 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/api")
 public class UserRestController {
 
-  @Value("${jwt.header}")
-  private String tokenHeader;
+    @Value("${jwt.header}")
+    private String tokenHeader;
 
-  @Autowired
-  private JwtTokenUtil jwtTokenUtil;
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
 
-  @Autowired
-  private UserDetailsService userDetailsService;
+    @Autowired
+    private UserDetailsService userDetailsService;
 
-  /**
-   * 获取授权的用户信息
-   *
-   * @param request
-   * @return
-   */
-  @RequestMapping(value = "/user", method = RequestMethod.GET)
-  public JwtUser getAuthenticatedUser(HttpServletRequest request) {
-    String token = request.getHeader(tokenHeader).substring(7);
-    String username = jwtTokenUtil.getUsernameFromToken(token);
-    JwtUser user = (JwtUser) userDetailsService.loadUserByUsername(username);
-    return user;
-  }
+    /**
+     * 获取授权的用户信息
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public JwtUser getAuthenticatedUser(HttpServletRequest request) {
+        String token = request.getHeader(tokenHeader).substring(7);
+        String username = jwtTokenUtil.getUsernameFromToken(token);
+        JwtUser user = (JwtUser) userDetailsService.loadUserByUsername(username);
+        return user;
+    }
 
 }

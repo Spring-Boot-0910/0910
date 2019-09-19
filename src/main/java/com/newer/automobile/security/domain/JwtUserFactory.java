@@ -18,13 +18,13 @@ public class JwtUserFactory {
     private JwtUserFactory() {
     }
 
-    public static UserDetails create(Users users){
-        return new JwtUser(users.getUid(),users.getUname(),users.getUpwd(),users.getType()==0?false:true,
-                users.getUemail(),users.getState(),maptoAuth(users.getAuthoritysList()));
+    public static UserDetails create(Users users) {
+        return new JwtUser(users.getUid(), users.getUname(), users.getUpwd(), users.getType() == 0 ? false : true,
+                users.getUemail(), users.getState(), maptoAuth(users.getAuthoritysList()));
     }
 
-    private static Collection<? extends GrantedAuthority> maptoAuth(List<Authoritys> authorities){
-        return authorities.stream().map(Authority->
+    private static Collection<? extends GrantedAuthority> maptoAuth(List<Authoritys> authorities) {
+        return authorities.stream().map(Authority ->
                 new SimpleGrantedAuthority(Authority.getAname().name())).
                 collect(Collectors.toList());
     }

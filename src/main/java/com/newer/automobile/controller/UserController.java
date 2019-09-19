@@ -1,7 +1,9 @@
 package com.newer.automobile.controller;
 
+import com.newer.automobile.domain.Users;
 import com.newer.automobile.security.domain.JwtAuthenticationResponse;
 import com.newer.automobile.security.domain.JwtAuthenticationResquest;
+import com.newer.automobile.security.domain.JwtUser;
 import com.newer.automobile.service.UserService;
 import com.newer.automobile.utils.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Random;
 
 
 @RestController
@@ -34,6 +38,7 @@ public class UserController {
     private UserService userService;
     @Autowired
     private PasswordEncoder encoder;
+
     @RequestMapping(value = "${jwt.path}", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationResquest authenticationRequest) throws AuthenticationException {
         UsernamePasswordAuthenticationToken upToken = new UsernamePasswordAuthenticationToken(
@@ -57,7 +62,15 @@ public class UserController {
     public int regUser(@RequestParam("name") String name,@RequestParam("email") String email,@RequestParam("pwd") String pwd){
         System.out.println("CCC"+name+"---"+email+"---"+pwd);
         String password = encoder.encode(pwd);
-        return userService.regUser(name,email,password);
+            return userService.regUser(name,email,password);
     }
 
+    @PostMapping("/email")
+    public void sendSimpleMail( @RequestParam("shoujian")String shoujian){
+        Random random=new Random();
+        int ran = (int)((Math.random()*9+1)*100000);
+        String msg=String.valueOf(ran);
+        Email email=new Email("2469228898@qq.com",shoujian,"验证码为："+msg);
+        userService.email(email);
+    }
 }
