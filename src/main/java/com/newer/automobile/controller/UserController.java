@@ -1,5 +1,6 @@
 package com.newer.automobile.controller;
 
+import com.newer.automobile.domain.Email;
 import com.newer.automobile.domain.Users;
 import com.newer.automobile.security.domain.JwtAuthenticationResponse;
 import com.newer.automobile.security.domain.JwtAuthenticationResquest;
