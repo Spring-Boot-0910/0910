@@ -6,12 +6,6 @@
     
     <select id="partByPartType" resultType="com.newer.automobile.domain.Part">
         select * from part
-        <where>
-            1=1
-            <if test="partType!=null and partType!=''">
-                and partType like concat('%',concat(#{partType},'%'))
-            </if>
-        </where>
     </select>
 
 </mapper>

@@ -9,17 +9,24 @@ import java.util.List;
 public interface PartMapper {
 
     /**
-     * 零件模糊查询/查询
+     * 查询
+     * @return
+     */
+    public List<Part> partByPartType();
+
+    /**
+     * 根据零件类型查询
      * @param partType
      * @return
      */
-    public List<Part> partByPartType(@Param("partType")String partType);
+    @Select("select * from part where partType=#{partType}")
+    public List<Part> partByType(@Param("partType")String partType);
 
     /**
      * 根据id查询
      * @return
      */
     @Select("select * from part where pid=#{pid}")
-    public int partById(@Param("pid")Integer pid);
+    public Part partById(@Param("pid")Integer pid);
 
 }

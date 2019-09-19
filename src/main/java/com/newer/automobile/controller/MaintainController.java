@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @RestController
+@RequestMapping("/api")
 public class MaintainController {
 
     @Autowired
@@ -26,8 +27,10 @@ public class MaintainController {
     @RequestMapping("/maintainAdd")
     public ResponseEntity<?> maintainAdd(@RequestParam("mname")String mname,@RequestParam("ucar")String ucar,
                                          @RequestParam("phone")String phone,@RequestParam("email")String email,
-                                         @RequestParam("Service")String Service,@RequestParam("time")String time){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                                         @RequestParam("Service")String Service,
+                                         @RequestParam("time") String time){
+        System.out.println(".."+time);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
         Date times = null;
         if (time!=null){
             try{
