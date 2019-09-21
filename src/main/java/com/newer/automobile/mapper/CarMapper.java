@@ -1,6 +1,7 @@
 package com.newer.automobile.mapper;
 
 import com.newer.automobile.domain.Car;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -19,4 +20,12 @@ public interface CarMapper {
      */
     @Select("select * from car discount!=0")
     public List<Car> specialCar();
+
+    /**
+     * 根据车的品牌查询所有车型
+     * @param bid
+     * @return
+     */
+    @Select("select * from car where bid=#{bid}")
+    public List<Car> allmodel(@Param("bid") Integer bid);
 }

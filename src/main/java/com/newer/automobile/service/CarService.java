@@ -27,4 +27,13 @@ public class CarService {
     public List<Car> specialCar(){
         return carMapper.specialCar();
     }
+
+    /**
+     * 根据车的品牌查询所有车型
+     * @param bid
+     * @return
+     */
+    public List<Car> allmodel(Integer bid){
+        return carMapper.allmodel(bid);
+    }
 }

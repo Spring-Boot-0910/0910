@@ -5,6 +5,7 @@ import com.newer.automobile.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -31,5 +32,15 @@ public class CarController {
     @PostMapping("/specialCar")
     public List<Car> specialCar(){
         return carService.specialCar();
+    }
+
+    /**
+     * 根据品牌查询车辆型号
+     * @param bid
+     * @return
+     */
+    @PostMapping("/allmodel")
+    public List<Car> allmodel(@RequestParam("bid") Integer bid){
+        return carService.allmodel(bid);
     }
 }
