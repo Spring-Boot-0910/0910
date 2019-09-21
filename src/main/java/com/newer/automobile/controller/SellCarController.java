@@ -19,6 +19,6 @@ public class SellCarController {
     @RequestMapping("/sellcar")
     public ResponseEntity<?> add(SellCar sellCar) {
         return new ResponseEntity<>(sellCarService.add(sellCar), HttpStatus.OK);
-
     }
+
 }

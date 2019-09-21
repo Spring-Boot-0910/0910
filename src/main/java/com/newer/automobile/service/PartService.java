@@ -14,12 +14,11 @@ public class PartService {
     private PartMapper partMapper;
 
     /**
-     * 零件模糊查询/查询
-     * @param partType
+     * 查询
      * @return
      */
-    public List<Part> partByPartType(String partType){
-        return partMapper.partByPartType(partType);
+    public List<Part> partByPartType(){
+        return partMapper.partByPartType();
     }
 
     /**
@@ -27,8 +26,12 @@ public class PartService {
      * @param pid
      * @return
      */
-    public int partById(Integer pid){
+    public Part partById(Integer pid){
         return partMapper.partById(pid);
+    }
+
+    public List<Part> partByType(String partType){
+        return partMapper.partByType(partType);
     }
 
 }

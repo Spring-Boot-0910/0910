@@ -20,15 +20,16 @@ public class SiteService {
         return siteMapper.province();
     }
 
-    public List<City> city(@Param("PROVINCE_CODE")String PROVINCE_CODE) {
-        return siteMapper.city();
+    public List<City> city(String PROVINCE_CODE) {
+        return siteMapper.city(PROVINCE_CODE);
     }
 
-    public List<Street> streets(@Param("CITY_CODE")String CITY_CODE) {
-        return siteMapper.street();
+    public List<Area> areas(String CITY_CODE) {
+        return siteMapper.areas(CITY_CODE);
     }
 
-    public List<Area> areas(@Param("AREA_CODE") String AREA_CODE) {
-        return siteMapper.area();
+    public List<Street> streets(String AREA_CODE) {
+        return siteMapper.street(AREA_CODE);
     }
+
 }

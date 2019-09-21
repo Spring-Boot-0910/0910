@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class Area {
     private int AREA_ID;
-    private String AREA__CODE;
+    private String AREA_CODE;
     private String CITY_CODE;
-    private String AREA__NAME;
+    private String AREA_NAME;
     private String SHORT_NAME;
     private String LNG;
     private String LAT;
@@ -20,11 +20,11 @@ public class Area {
     public Area() {
     }
 
-    public Area(int AREA_ID, String AREA__CODE, String CITY_CODE, String AREA__NAME, String SHORT_NAME, String LNG, String LAT, int SORT, Date GMT_CREATE, Date GMT_MODIFIED, String MEMO, int DATA_STATE, String TENANT_CODE) {
+    public Area(int AREA_ID, String AREA_CODE, String CITY_CODE, String AREA_NAME, String SHORT_NAME, String LNG, String LAT, int SORT, Date GMT_CREATE, Date GMT_MODIFIED, String MEMO, int DATA_STATE, String TENANT_CODE) {
         this.AREA_ID = AREA_ID;
-        this.AREA__CODE = AREA__CODE;
+        this.AREA_CODE = AREA_CODE;
         this.CITY_CODE = CITY_CODE;
-        this.AREA__NAME = AREA__NAME;
+        this.AREA_NAME = AREA_NAME;
         this.SHORT_NAME = SHORT_NAME;
         this.LNG = LNG;
         this.LAT = LAT;
@@ -44,12 +44,20 @@ public class Area {
         this.AREA_ID = AREA_ID;
     }
 
-    public String getAREA__CODE() {
-        return AREA__CODE;
+    public String getAREA_CODE() {
+        return AREA_CODE;
     }
 
-    public void setAREA__CODE(String AREA__CODE) {
-        this.AREA__CODE = AREA__CODE;
+    public void setAREA_CODE(String AREA_CODE) {
+        this.AREA_CODE = AREA_CODE;
+    }
+
+    public String getAREA_NAME() {
+        return AREA_NAME;
+    }
+
+    public void setAREA_NAME(String AREA_NAME) {
+        this.AREA_NAME = AREA_NAME;
     }
 
     public String getCITY_CODE() {
@@ -58,14 +66,6 @@ public class Area {
 
     public void setCITY_CODE(String CITY_CODE) {
         this.CITY_CODE = CITY_CODE;
-    }
-
-    public String getAREA__NAME() {
-        return AREA__NAME;
-    }
-
-    public void setAREA__NAME(String AREA__NAME) {
-        this.AREA__NAME = AREA__NAME;
     }
 
     public String getSHORT_NAME() {
