@@ -1,12 +1,16 @@
 server:
-  port: 8087
+  port: 8086
   servlet:
     context-path:
 spring:
   datasource:
     username: root
     password: 123456
-    url: jdbc:mysql://localhost/newerstu?useLL=false&serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=true
+<<<<<<< Updated upstream
+    url: jdbc:mysql://127.0.0.1:3306/newerstu?useSSL=false&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
+=======
+    url: jdbc:mysql://127.0.0.1:3306/yzy?useSSL=false&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
+>>>>>>> Stashed changes
   redis:
     host: 127.0.0.1
     port: 6379
@@ -26,14 +30,10 @@ spring:
 mybatis:
   type-aliases-package: com.newer.automobile.domain
   mapper-locations: classpath:mapper/*.xml
-#logging:
-#  level:
-#    com.newer.hospital.mapper: debug
-#    org.springframework.security: info
 jwt:
   secret: mySecret
   expiration: 604800
   header: Authorization
   tokenHead: bearer
-  path: /auth
+  path: /loginUser
   refresh: /refresh

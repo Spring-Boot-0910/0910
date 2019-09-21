@@ -14,10 +14,11 @@ public class MaintainService {
 
     /**
      * 请求服务
+     *
      * @param maintain
      * @return
      */
-    public int maintainAdd(Maintain maintain){
+    public int maintainAdd(Maintain maintain) {
         return maintainMapper.maintainAdd(maintain);
     }
 

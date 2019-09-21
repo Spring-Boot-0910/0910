@@ -1,8 +1,10 @@
 package com.newer.automobile.controller;
 
 import com.newer.automobile.domain.Email;
+import com.newer.automobile.domain.Users;
 import com.newer.automobile.security.domain.JwtAuthenticationResponse;
 import com.newer.automobile.security.domain.JwtAuthenticationResquest;
+import com.newer.automobile.security.domain.JwtUser;
 import com.newer.automobile.service.UserService;
 import com.newer.automobile.utils.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +63,7 @@ public class UserController {
     public int regUser(@RequestParam("name") String name,@RequestParam("email") String email,@RequestParam("pwd") String pwd){
         System.out.println("CCC"+name+"---"+email+"---"+pwd);
         String password = encoder.encode(pwd);
-        return userService.regUser(name,email,password);
+            return userService.regUser(name,email,password);
     }
 
     @PostMapping("/email")

@@ -18,13 +18,12 @@ public class PartController {
     private PartService partService;
 
     /**
-     * 零件模糊查询/查询
-     * @param partType
+     * 查询
      * @return
      */
     @RequestMapping("/partByPartType")
-    public ResponseEntity<?> partByPartType(@RequestParam("partType")String partType){
-        List<Part> list = partService.partByPartType(partType);
+    public ResponseEntity<?> partByPartType(){
+        List<Part> list = partService.partByPartType();
         if (list==null){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -42,11 +41,20 @@ public class PartController {
         if (pid!=null){
             id = Integer.parseInt(pid);
         }
-        int fluRows = partService.partById(id);
-        if (fluRows==0){
+        Part part = partService.partById(id);
+        if (part==null){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(fluRows,HttpStatus.OK);
+        return new ResponseEntity<>(part,HttpStatus.OK);
+    }
+
+    @RequestMapping("partByType")
+    public ResponseEntity<?> partByType(@RequestParam("partType")String partType){
+        List<Part> list = partService.partByType(partType);
+        if (list==null){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(list,HttpStatus.OK);
     }
 
 }

@@ -19,7 +19,7 @@
     </resultMap>
     <select id="loadUserByUsername" resultMap="user_auth_map">
         select u.uid,u.uname,u.upwd,u.state,u.uemail,u.uphone,u.type
-  ,a.aid,a.aname from users u,authoritys  a,users_authoritys ua where
-  a.aid=ua.authority_Id and u.uid=ua.users_Id and u.uname=#{uname}
+        ,a.aid,a.aname from users u,authoritys a,users_authoritys ua where
+        a.aid=ua.authority_Id and u.uid=ua.users_Id and u.uname=#{uname}
     </select>
 </mapper>

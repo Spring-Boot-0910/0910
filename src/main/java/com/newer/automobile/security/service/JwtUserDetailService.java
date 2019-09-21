@@ -21,9 +21,9 @@ public class JwtUserDetailService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         //1.根据用户名查询用户,角色信息
         Users user = usersMapper.loadUserByUsername(username);
-        if (user==null){
-            throw new UsernameNotFoundException("not found username with"+username);
+        if (user == null) {
+            throw new UsernameNotFoundException("not found username with" + username);
         }
-            return JwtUserFactory.create(user);
+        return JwtUserFactory.create(user);
     }
 }
