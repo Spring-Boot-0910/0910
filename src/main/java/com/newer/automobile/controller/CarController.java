@@ -50,4 +50,14 @@ public class CarController {
                          @RequestParam("startYear")String startYear, @RequestParam("endYear")String endYear, @RequestParam("minPrice")String minPrice, @RequestParam("maxPrice")String maxPrice){
         return carService.getCount(cname, ctype, colour, transmission, fueltype, startYear, endYear, minPrice, maxPrice);
     }
+
+    /**
+     * 根据品牌查询车辆型号
+     * @param bid
+     * @return
+     */
+    @PostMapping("/allmodel")
+    public List<Car> allmodel(@RequestParam("bid") Integer bid){
+        return carService.allmodel(bid);
+    }
 }

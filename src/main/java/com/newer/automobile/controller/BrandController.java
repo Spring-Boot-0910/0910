@@ -16,8 +16,7 @@ public class BrandController {
     private BrandService brandService;
 
     @PostMapping("/queryBrand")
-    public List<Brand> queryBrand(){
-        System.out.println(brandService.queryBrand());
+    public List<Brand> queryBrand() {
         return brandService.queryBrand();
     }
 }

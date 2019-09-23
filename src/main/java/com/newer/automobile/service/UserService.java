@@ -16,12 +16,12 @@ public class UserService  {
     @Autowired
     private JavaMailSender javaMailSender;
 
-    public int regUser(String name,String email,String pwd){
-        return usersMapper.regUser(name,email,pwd);
+    public int regUser(String name, String email, String pwd) {
+        return usersMapper.regUser(name, email, pwd);
     }
 
-    public Users queryLogin(String email,String pwd){
-        return usersMapper.queryLogin(email,pwd);
+    public Users queryLogin(String email, String pwd) {
+        return usersMapper.queryLogin(email, pwd);
     }
 
     public Users queryPwd(String uemail){

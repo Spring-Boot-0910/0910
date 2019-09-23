@@ -32,5 +32,13 @@ public interface CarMapper {
     public int getCount(@Param("cname")String cname,@Param("ctype") String ctype,
                         @Param("colour")String colour,@Param("transmission")String transmission,@Param("fueltype")String fueltype,
                         @Param("startYear")String startYear,@Param("endYear")String endYear,@Param("minPrice")String minPrice,@Param("maxPrice")String maxPrice);
-    
+
+
+    /**
+     * 根据车的品牌查询所有车型
+     * @param bid
+     * @return
+     */
+    @Select("select * from car where bid=#{bid}")
+    public List<Car> allmodel(@Param("bid") Integer bid);
 }

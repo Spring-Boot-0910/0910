@@ -14,9 +14,10 @@ public class BrandService {
 
     /**
      * 查询所有logo图案
+     *
      * @return
      */
-    public List<Brand> queryBrand(){
+    public List<Brand> queryBrand() {
         return brandMapper.queryBrands();
     }
 }

@@ -14,11 +14,11 @@ import java.io.Serializable;
  * 处理未授权的异常
  */
 @Component
-public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint,Serializable {
+public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint, Serializable {
     private static final long serialVersionUID = 7640421346512118406L;
 
     @Override
     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
-        httpServletResponse.sendError(HttpServletResponse.SC_FORBIDDEN,"forbidden");
+        httpServletResponse.sendError(HttpServletResponse.SC_FORBIDDEN, "forbidden");
     }
 }

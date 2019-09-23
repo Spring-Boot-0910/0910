@@ -38,4 +38,13 @@ public class CarService {
     public int getCount(String cname,String ctype,String colour,String transmission,String fueltype,String startYear,String endYear,String minPrice,String maxPrice){
         return carMapper.getCount(cname, ctype, colour, transmission, fueltype, startYear, endYear, minPrice, maxPrice);
     }
+
+    /**
+     * 根据车的品牌查询所有车型
+     * @param bid
+     * @return
+     */
+    public List<Car> allmodel(Integer bid){
+        return carMapper.allmodel(bid);
+    }
 }
