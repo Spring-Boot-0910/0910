@@ -28,6 +28,14 @@ public class UserService  {
         return usersMapper.queryPwd(uemail);
     }
 
+    public int updPwd(String upwd,String uname){
+        return usersMapper.updPwd(upwd,uname);
+    }
+
+    public Users queryEmail(String uname){
+        return usersMapper.queryEmail(uname);
+    }
+
     public void email(Email email){
         SimpleMailMessage ssm = new SimpleMailMessage();
         ssm.setFrom(email.getSender()); //发件人

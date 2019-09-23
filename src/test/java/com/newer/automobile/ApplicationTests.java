@@ -11,7 +11,7 @@ public class ApplicationTests {
 
     @Test
     public void contextLoads() {
-        System.out.println((int)((Math.random()*9+1)*100000));
+
     }
 
 }
