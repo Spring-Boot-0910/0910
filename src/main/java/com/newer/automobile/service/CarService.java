@@ -47,4 +47,8 @@ public class CarService {
     public List<Car> allmodel(Integer bid){
         return carMapper.allmodel(bid);
     }
+
+    public List<Car> allprice(Integer bid,String ctype){
+        return carMapper.allprice(bid, ctype);
+    }
 }

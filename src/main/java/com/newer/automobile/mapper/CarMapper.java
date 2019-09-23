@@ -39,6 +39,15 @@ public interface CarMapper {
      * @param bid
      * @return
      */
-    @Select("select * from car where bid=#{bid}")
+    @Select("select * from car where bid=#{bid} group by ctype")
     public List<Car> allmodel(@Param("bid") Integer bid);
+
+    /**
+     * 根据品牌和车型查询价格
+     * @param bid
+     * @param ctype
+     * @return
+     */
+    @Select("select * from car where bid=#{bid} and ctype='#{ctype}'")
+    public List<Car> allprice(@Param("bid") Integer bid,@Param("ctype") String ctype);
 }

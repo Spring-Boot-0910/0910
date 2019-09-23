@@ -60,4 +60,15 @@ public class CarController {
     public List<Car> allmodel(@RequestParam("bid") Integer bid){
         return carService.allmodel(bid);
     }
+
+    /**
+     * 根据品牌和车型查询价格
+     * @param bid
+     * @param ctype
+     * @return
+     */
+    @PostMapping("/allprice")
+    public List<Car> allprice(@RequestParam("bid") Integer bid,@RequestParam("ctype") String ctype){
+        return carService.allprice(bid, ctype);
+    }
 }
