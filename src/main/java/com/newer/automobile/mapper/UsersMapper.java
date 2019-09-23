@@ -1,9 +1,11 @@
 package com.newer.automobile.mapper;
 
+import com.newer.automobile.domain.Car;
 import com.newer.automobile.domain.Users;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 
 public interface UsersMapper  {
@@ -21,5 +23,14 @@ public interface UsersMapper  {
     //根据邮箱查询密码
     @Select("select upwd from users where uemail = #{uemail}")
     public Users queryPwd(@Param("uemail")String uemail);
+
+    //根据用户名查询邮箱
+    @Select("select uemail from users where uname =#{uname}")
+    public Users queryEmail(@Param("uname")String uname);
+
+    //修改密码
+    @Update("update users set upwd = #{upwd} where uname = #{uname}")
+    public int updPwd(@Param("upwd") String upwd,@Param("uname")String uname);
+
 }
 

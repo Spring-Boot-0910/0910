@@ -20,6 +20,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.Random;
 
 
@@ -65,13 +66,38 @@ public class UserController {
         String password = encoder.encode(pwd);
             return userService.regUser(name,email,password);
     }
-
+    //发送邮箱
     @PostMapping("/email")
-    public void sendSimpleMail( @RequestParam("shoujian")String shoujian){
+    public void sendSimpleMail(@RequestParam("uname") String uname, HttpSession session){
+        Users users =  userService.queryEmail(uname);
         Random random=new Random();
         int ran = (int)((Math.random()*9+1)*100000);
         String msg=String.valueOf(ran);
+        String shoujian = users.getUemail();
+        System.out.println("------------"+msg);
         Email email=new Email("2469228898@qq.com",shoujian,"验证码为："+msg);
         userService.email(email);
+        session.setAttribute("code",msg);
+    }
+    //验证验证码是否正确
+    @PostMapping("/code")
+    public int getCode( @RequestParam("code")String code,HttpSession session){
+        //System.out.println(code+"-------------------------"+session.getAttribute("code"));
+        if (code.equals(session.getAttribute("code"))){
+            //System.out.println("success");
+            return 1;
+        }else {
+            //System.out.println("fail");
+            return 0;
+        }
+    }
+    //修改密码
+    @PostMapping("/updPwd")
+    public int updPwd( @RequestParam("newpwd")String newpwd,@RequestParam("username")String username){
+        String password = encoder.encode(newpwd);
+        System.out.println("password="+password+",username="+username);
+        int count = userService.updPwd(password,username);
+        System.out.println("---------------------------------------"+count);
+        return  count;
     }
 }

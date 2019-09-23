@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newer.automobile.mapper.CarMapper">
+
+    <select id="queryCar" resultType="com.newer.automobile.domain.Car">
+      select cimg,cprice,cname,pailiang,ctype,date_format(ctime, '%Y') ctime from car
+        <where>
+        <if test="cname!=null and cname!=''" >
+            and cname like concat("%",concat(#{cname},"%"))
+        </if>
+         <if test="ctype!=null and ctype!=''" >
+              and ctype like concat("%",concat(#{ctype},"%"))
+         </if>
+            <if test="colour!=null and colour!=''" >
+                and colour like concat("%",concat(#{colour},"%"))
+            </if>
+            <if test="transmission!=null and transmission!=''" >
+                and transmission like concat("%",concat(#{transmission},"%"))
+            </if>
+            <if test="fueltype!=null and fueltype!=''" >
+                and fueltype like concat("%",concat(#{fueltype},"%"))
+            </if>
+            <if test="startYear!=null and startYear!='' and endYear!=null and endYear!=''" >
+                and ctime like between startYear and endYear
+            </if>
+            <if test="minPrice!=null and minPrice!='' and maxPrice!=null and maxPrice!=''" >
+                and cprice like between minPrice and maxPrice
+            </if>
+        </where>
+        limit #{startIndex},12
+    </select>
+
+    <select id="getCount" resultType="int">
+      select count(cid) from car
+        <where>
+            <if test="cname!=null and cname!=''" >
+                and cname like concat("%",concat(#{cname},"%"))
+            </if>
+            <if test="ctype!=null and ctype!=''" >
+                and ctype like concat("%",concat(#{ctype},"%"))
+            </if>
+            <if test="colour!=null and colour!=''" >
+                and colour like concat("%",concat(#{colour},"%"))
+            </if>
+            <if test="transmission!=null and transmission!=''" >
+                and transmission like concat("%",concat(#{transmission},"%"))
+            </if>
+            <if test="fueltype!=null and fueltype!=''" >
+                and fueltype like concat("%",concat(#{fueltype},"%"))
+            </if>
+            <if test="startYear!=null and startYear!='' and endYear!=null and endYear!=''" >
+                and ctime like between startYear and endYear
+            </if>
+            <if test="minPrice!=null and minPrice!='' and maxPrice!=null and maxPrice!=''" >
+                and cprice like between minPrice and maxPrice
+            </if>
+        </where>
+    </select>
+</mapper>
