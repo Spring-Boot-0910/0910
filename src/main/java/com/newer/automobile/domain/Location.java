@@ -13,11 +13,16 @@ public class Location implements Serializable {
     private String area;
     private String street;
     private String message;
+    private String state;
+    private Users users;
+    private Province provinces;
+    private City citys;
+    private Area areas;
 
     public Location() {
     }
 
-    public Location(Integer lid, Integer uid, String name, String phone, String province, String city, String area, String street, String message) {
+    public Location(Integer lid, Integer uid, String name, String phone, String province, String city, String area, String street, String message, String state, Users users, Province provinces, City citys, Area areas) {
         this.lid = lid;
         this.uid = uid;
         this.name = name;
@@ -27,6 +32,11 @@ public class Location implements Serializable {
         this.area = area;
         this.street = street;
         this.message = message;
+        this.state = state;
+        this.users = users;
+        this.provinces = provinces;
+        this.citys = citys;
+        this.areas = areas;
     }
 
     public Integer getLid() {
@@ -99,5 +109,45 @@ public class Location implements Serializable {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
+    }
+
+    public Province getProvinces() {
+        return provinces;
+    }
+
+    public void setProvinces(Province provinces) {
+        this.provinces = provinces;
+    }
+
+    public City getCitys() {
+        return citys;
+    }
+
+    public void setCitys(City citys) {
+        this.citys = citys;
+    }
+
+    public Area getAreas() {
+        return areas;
+    }
+
+    public void setAreas(Area areas) {
+        this.areas = areas;
     }
 }
