@@ -13,7 +13,7 @@ public interface CarMapper {
      * 查询最新8条的记录
      * @return
      */
-    @Select("select * from car order by ctime desc limit 0, 8")
+    @Select("select * from car where crank='新车' order by ctime desc limit 0, 8")
     public List<Car> newestCar();
 
     /**
@@ -48,6 +48,6 @@ public interface CarMapper {
      * @param ctype
      * @return
      */
-    @Select("select * from car where bid=#{bid} and ctype='#{ctype}'")
+    @Select("select * from car where bid=#{bid} and ctype=#{ctype}")
     public List<Car> allprice(@Param("bid") Integer bid,@Param("ctype") String ctype);
 }
