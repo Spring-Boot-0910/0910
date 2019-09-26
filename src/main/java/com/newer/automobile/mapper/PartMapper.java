@@ -46,7 +46,6 @@ public interface PartMapper {
      * @param partType
      * @return
      */
-    @Select("select count(*) from part where partType=#{partType}")
     public int count(@Param("partType")String partType);
 
     /**

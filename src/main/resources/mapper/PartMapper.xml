@@ -24,6 +24,16 @@
          limit #{startIndex},#{pageSize}
     </select>
 
+    <select id="count" resultType="int">
+        select count(*) from part
+        <where>
+            1=1
+            <if test="partType!=null and partType!=''">
+                and partType=#{partType}
+            </if>
+        </where>
+    </select>
+
     <select id="partByPartType" resultType="com.newer.automobile.domain.Part">
         select * from part
     </select>
