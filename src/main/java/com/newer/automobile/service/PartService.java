@@ -30,8 +30,62 @@ public class PartService {
         return partMapper.partById(pid);
     }
 
+    /**
+     * 查询相同类型的数据
+     * @param partType
+     * @return
+     */
     public List<Part> partByType(String partType){
         return partMapper.partByType(partType);
+    }
+
+    //后台
+
+    /**
+     * 分页查询
+     * @param startIndex
+     * @param pageSize
+     * @param partType
+     * @return
+     */
+    public List<Part> partSel(int startIndex, int pageSize, String partType){
+        return partMapper.partSel(startIndex, pageSize, partType);
+    }
+
+    /**
+     * 所有零件数量
+     * @param partType
+     * @return
+     */
+    public int count(String partType){
+        return partMapper.count(partType);
+    }
+
+    /**
+     * 添加零件
+     * @param part
+     * @return
+     */
+    public int partAdd(Part part){
+        return partMapper.partAdd(part);
+    }
+
+    /**
+     * 删除零件
+     * @param pid
+     * @return
+     */
+    public int partDel(Integer pid){
+        return partMapper.partDel(pid);
+    }
+
+    /**
+     * 修改零件
+     * @param part
+     * @return
+     */
+    public int partUpd(Part part){
+        return partMapper.partUpd(part);
     }
 
 }

@@ -4,4 +4,43 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.newer.automobile.mapper.LocationMapper">
 
+    <resultMap id="locat_map" type="com.newer.automobile.domain.Location">
+        <id column="lid" property="lid"/>
+        <result column="uid" property="uid"/>
+        <result column="name" property="name"/>
+        <result column="phone" property="phone"/>
+        <result column="province" property="province"/>
+        <result column="city" property="city"/>
+        <result column="area" property="area"/>
+        <result column="street" property="street"/>
+        <result column="message" property="message"/>
+        <result column="state" property="state"/>
+        <association property="users" javaType="com.newer.automobile.domain.Users">
+            <id column="uid" property="uid"/>
+            <result column="uname" property="uname"/>
+        </association>
+        <association property="provinces" javaType="com.newer.automobile.domain.Province">
+            <id column="PROVINCE_ID" property="PROVINCE_ID"/>
+            <result column="PROVINCE_CODE" property="PROVINCE_CODE"/>
+            <result column="PROVINCE_NAME" property="PROVINCE_NAME"/>
+        </association>
+        <association property="citys" javaType="com.newer.automobile.domain.City">
+            <id column="CITY_ID" property="CITY_ID"/>
+            <result column="CITY_CODE" property="CITY_CODE"/>
+            <result column="CITY_NAME" property="CITY_NAME"/>
+        </association>
+        <association property="areas" javaType="com.newer.automobile.domain.Area">
+            <id column="AREA_ID" property="AREA_ID"/>
+            <result column="AREA_CODE" property="AREA_CODE"/>
+            <result column="AREA_NAME" property="AREA_NAME"/>
+        </association>
+    </resultMap>
+
+    <select id="locationSel" resultMap="locat_map">
+        select l.*,u.uname,p.PROVINCE_NAME,c.CITY_NAME,a.AREA_NAME from location l inner join
+        users u inner join bs_province p inner join bs_city c inner join bs_area a
+        on l.uid=u.uid and l.province=p.PROVINCE_CODE and l.city=c.CITY_CODE and l.area=a.AREA_CODE
+         where l.state=#{state} limit #{startIndex},#{pageSize}
+    </select>
+
 </mapper>

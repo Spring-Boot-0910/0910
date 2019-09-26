@@ -4,4 +4,20 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.newer.automobile.mapper.MaintainMapper">
 
+    <resultMap id="main_map" type="com.newer.automobile.domain.Maintain">
+        <id column="mid" property="mid"/>
+        <result column="mname" property="mname"/>
+        <result column="ucar" property="ucar"/>
+        <result column="phone" property="phone"/>
+        <result column="email" property="email"/>
+        <result column="Service" property="Service"/>
+        <result column="time" property="time"/>
+        <result column="by1" property="by1"/>
+        <result column="by2" property="by2"/>
+    </resultMap>
+
+    <select id="maintainSel" resultMap="main_map">
+        select * from maintain where by1=#{by1} limit #{startIndex},#{pageSize}
+    </select>
+
 </mapper>
