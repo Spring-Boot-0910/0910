@@ -3,7 +3,6 @@ package com.newer.automobile.controller;
 import com.newer.automobile.domain.Car;
 import com.newer.automobile.domain.Parameter;
 import com.newer.automobile.service.CarService;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
