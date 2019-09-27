@@ -27,8 +27,12 @@ public class Car implements Serializable {
     private Integer bid;
     private String by1;
     private Integer by2;
+    private String fueltype;
 
-    public Car(Integer cid, String cname, String cimg, String cimg2, String ctype, Double cprice, String discount, Date ctime, String colour, String crank, Double speed, Double pailiang, String transmission, String fuelEconomy, Integer bid, String by1, Integer by2) {
+    public Car() {
+    }
+
+    public Car(Integer cid, String cname, String cimg, String cimg2, String ctype, Double cprice, String discount, Date ctime, String colour, String crank, Double speed, Double pailiang, String transmission, String fuelEconomy, Integer bid, String by1, Integer by2, String fueltype) {
         this.cid = cid;
         this.cname = cname;
         this.cimg = cimg;
@@ -46,9 +50,11 @@ public class Car implements Serializable {
         this.bid = bid;
         this.by1 = by1;
         this.by2 = by2;
+        this.fueltype = fueltype;
     }
 
-    public Car() {
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     public Integer getCid() {
@@ -185,5 +191,13 @@ public class Car implements Serializable {
 
     public void setBy2(Integer by2) {
         this.by2 = by2;
+    }
+
+    public String getFueltype() {
+        return fueltype;
+    }
+
+    public void setFueltype(String fueltype) {
+        this.fueltype = fueltype;
     }
 }

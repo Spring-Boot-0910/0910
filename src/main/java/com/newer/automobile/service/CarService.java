@@ -1,9 +1,11 @@
 package com.newer.automobile.service;
 
 import com.newer.automobile.domain.Car;
+import com.newer.automobile.domain.Parameter;
 import com.newer.automobile.mapper.CarMapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.aggregation.ArrayOperators;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,13 +32,13 @@ public class CarService {
     }
 
     //查询所有车
-    public List<Car> queryCar(Integer startIndex,String cname,String ctype,String colour,String transmission,String fueltype,String startYear,String endYear,String minPrice,String maxPrice){
-        return carMapper.queryCar(startIndex, cname, ctype, colour, transmission, fueltype, startYear, endYear, minPrice, maxPrice);
+    public List<Car> queryCar(String crank,Integer startIndex,Integer pageSize,String cname,String ctype,String colour,String transmission,String fueltype,String startYear,String endYear,String minPrice,String maxPrice){
+        return carMapper.queryCar(crank,startIndex, pageSize,cname, ctype, colour, transmission, fueltype, startYear, endYear, minPrice, maxPrice);
     }
 
     //获取所有汽车数量
-    public int getCount(String cname,String ctype,String colour,String transmission,String fueltype,String startYear,String endYear,String minPrice,String maxPrice){
-        return carMapper.getCount(cname, ctype, colour, transmission, fueltype, startYear, endYear, minPrice, maxPrice);
+    public int getCount(String crank,String cname,String ctype,String colour,String transmission,String fueltype,String startYear,String endYear,String minPrice,String maxPrice){
+        return carMapper.getCount(crank,cname, ctype, colour, transmission, fueltype, startYear, endYear, minPrice, maxPrice);
     }
 
     /**
@@ -50,5 +52,13 @@ public class CarService {
 
     public List<Car> allprice(Integer bid,String ctype){
         return carMapper.allprice(bid, ctype);
+    }
+
+    public List<Parameter> queryParameter(Integer cid){
+        return carMapper.queryParameter(cid);
+    }
+
+    public List<Car> queryCarById(Integer cid){
+        return carMapper.queryCarById(cid);
     }
 }
