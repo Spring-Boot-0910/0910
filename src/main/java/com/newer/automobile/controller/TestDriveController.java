@@ -1,6 +1,6 @@
 package com.newer.automobile.controller;
 
-import com.newer.automobile.domain.Parameter;
+import com.newer.automobile.domain.Param;
 import com.newer.automobile.domain.TestDrive;
 import com.newer.automobile.security.domain.JwtUser;
 import com.newer.automobile.service.TestDriveService;
@@ -11,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -47,7 +46,7 @@ public class TestDriveController {
         int pageSize = Integer.parseInt(request.getParameter("iDisplayLength"));
         int countTid=testDriveService.countTid();
         List<TestDrive> testDriveList=testDriveService.queryAll(startIndex,pageSize);
-        Parameter parameter=new Parameter(testDriveList,countTid,countTid);
+        Param parameter=new Param(testDriveList,countTid,countTid);
         return new ResponseEntity<>(parameter,HttpStatus.OK);
     }
 

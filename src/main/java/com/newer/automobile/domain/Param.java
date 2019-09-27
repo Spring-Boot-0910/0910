@@ -2,15 +2,15 @@ package com.newer.automobile.domain;
 
 import java.util.List;
 
-public class Parameter {
+public class Param {
     private List<?> data;
     private Integer iTotalDisplayRecords;
     private Integer iTotalRecords;
 
-    public Parameter() {
+    public Param() {
     }
 
-    public Parameter(List<?> data, Integer iTotalDisplayRecords, Integer iTotalRecords) {
+    public Param(List<?> data, Integer iTotalDisplayRecords, Integer iTotalRecords) {
         this.data = data;
         this.iTotalDisplayRecords = iTotalDisplayRecords;
         this.iTotalRecords = iTotalRecords;
