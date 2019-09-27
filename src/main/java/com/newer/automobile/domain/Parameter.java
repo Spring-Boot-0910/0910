@@ -1,19 +1,11 @@
 package com.newer.automobile.domain;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.io.Serializable;
-import java.util.Date;
 
 public class Parameter implements Serializable {
 
     private Integer pid;
     private String pandt;
     private String fuelEconome;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private String acceLerationTime;
     private String maximuMspeed;
     private String Trunkolumve;
