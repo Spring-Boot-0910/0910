@@ -4,6 +4,30 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.newer.automobile.mapper.CarMapper">
 
+    <resultMap id="car_map" type="com.newer.automobile.domain.Car">
+    <id column="cid" property="cid"/>
+    <result column="cname" property="cname"/>
+    <result column="cimg" property="cimg"/>
+    <result column="cimg2" property="cimg2"/>
+    <result column="ctype" property="ctype"/>
+    <result column="cprice" property="cprice"/>
+    <result column="discount" property="discount"/>
+    <result column="mileage" property="mileage"/>
+    <result column="ctime" property="ctime"/>
+    <result column="colour" property="colour"/>
+    <result column="crank" property="crank"/>
+    <result column="speed" property="speed"/>
+    <result column="pailiang" property="pailiang"/>
+    <result column="transmission" property="transmission"/>
+    <result column="fueltype" property="fueltype"/>
+    <result column="fuelEconomy" property="fuelEconomy"/>
+    <result column="bid" property="bid"/>
+    <association property="brand" javaType="com.newer.automobile.domain.Brand">
+        <id column="bid" property="bid"/>
+        <result column="bname" property="bname"/>
+    </association>
+    </resultMap>
+
     <select id="queryCar" resultType="com.newer.automobile.domain.Car">
       select colour,cid,fuelEconomy,speed,transmission,fueltype,cimg,cprice,cname,pailiang,ctype,date_format(ctime, '%Y') ctime from car
         <where>
@@ -67,4 +91,9 @@
             </if>
         </where>
     </select>
+
+    <select id="carSel" resultMap="car_map">
+        select c.*,b.bname from car c inner join brand b on c.bid=b.bid limit #{startIndex},#{pageSize}
+    </select>
+
 </mapper>

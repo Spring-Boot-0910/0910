@@ -1,6 +1,7 @@
 package com.newer.automobile.mapper;
 
 import com.newer.automobile.domain.Car;
+import org.apache.ibatis.annotations.*;
 import com.newer.automobile.domain.Parameter;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -51,6 +52,52 @@ public interface CarMapper {
      */
     @Select("select * from car where bid=#{bid} and ctype=#{ctype}")
     public List<Car> allprice(@Param("bid") Integer bid,@Param("ctype") String ctype);
+
+    //后台
+
+    /**
+     * 分页查询
+     * @param startIndex
+     * @param pageSize
+     * @return
+     */
+    public List<Car> carSel(@Param("startIndex") int startIndex,
+                            @Param("pageSize") int pageSize);
+
+    /**
+     * 总数
+     * @return
+     */
+    @Select("select count(*) from car")
+    public int count();
+
+    /**
+     * 添加汽车
+     * @param car
+     * @return
+     */
+    @Insert("insert into car values(null,#{cname},#{cimg},#{cimg2},#{ctype},#{cprice},#{discount},#{mileage}," +
+            "#{ctime},#{colour},#{crank},#{speed},#{pailiang},#{transmission},#{fueltype},#{fuelEconomy},#{bid},null,null)")
+    public int carAdd(Car car);
+
+    /**
+     * 删除汽车
+     * @param cid
+     * @return
+     */
+    @Delete("delete from car where cid=#{cid}")
+    public int carDel(@Param("cid")Integer cid);
+
+    /**
+     * 修改汽车
+     * @param car
+     * @return
+     */
+    @Update("update car set cname=#{cname},cimg=#{cimg},cimg2=#{cimg2},ctype=#{ctype},cprice=#{cprice},discount=#{discount}," +
+            "mileage=#{mileage},ctime=#{ctime},colour=#{colour},crank=#{crank},speed=#{speed},pailiang=#{pailiang}," +
+            "transmission=#{transmission},fueltype=#{fueltype},fuelEconomy=#{fuelEconomy},bid=#{bid} where cid=#{cid}")
+    public int carUpd(Car car);
+
 
     //根据carId查询信息
     @Select("select * from car where cid = #{cid}")

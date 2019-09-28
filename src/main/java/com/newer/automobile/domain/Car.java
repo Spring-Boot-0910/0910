@@ -15,6 +15,7 @@ public class Car implements Serializable {
     private String ctype;
     private Double cprice;
     private String discount;
+    private double mileage;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private Date ctime;
@@ -23,16 +24,17 @@ public class Car implements Serializable {
     private Double speed;
     private Double pailiang;
     private String transmission;
+    private String fueltype;
     private String fuelEconomy;
     private Integer bid;
     private String by1;
     private Integer by2;
-    private String fueltype;
+    private Brand brand;
 
     public Car() {
     }
 
-    public Car(Integer cid, String cname, String cimg, String cimg2, String ctype, Double cprice, String discount, Date ctime, String colour, String crank, Double speed, Double pailiang, String transmission, String fuelEconomy, Integer bid, String by1, Integer by2, String fueltype) {
+    public Car(Integer cid, String cname, String cimg, String cimg2, String ctype, Double cprice, String discount, double mileage, Date ctime, String colour, String crank, Double speed, Double pailiang, String transmission, String fueltype, String fuelEconomy, Integer bid, String by1, Integer by2, Brand brand) {
         this.cid = cid;
         this.cname = cname;
         this.cimg = cimg;
@@ -40,21 +42,19 @@ public class Car implements Serializable {
         this.ctype = ctype;
         this.cprice = cprice;
         this.discount = discount;
+        this.mileage = mileage;
         this.ctime = ctime;
         this.colour = colour;
         this.crank = crank;
         this.speed = speed;
         this.pailiang = pailiang;
         this.transmission = transmission;
+        this.fueltype = fueltype;
         this.fuelEconomy = fuelEconomy;
         this.bid = bid;
         this.by1 = by1;
         this.by2 = by2;
-        this.fueltype = fueltype;
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+        this.brand = brand;
     }
 
     public Integer getCid() {
@@ -113,6 +113,14 @@ public class Car implements Serializable {
         this.discount = discount;
     }
 
+    public double getMileage() {
+        return mileage;
+    }
+
+    public void setMileage(double mileage) {
+        this.mileage = mileage;
+    }
+
     public Date getCtime() {
         return ctime;
     }
@@ -161,6 +169,14 @@ public class Car implements Serializable {
         this.transmission = transmission;
     }
 
+    public String getFueltype() {
+        return fueltype;
+    }
+
+    public void setFueltype(String fueltype) {
+        this.fueltype = fueltype;
+    }
+
     public String getFuelEconomy() {
         return fuelEconomy;
     }
@@ -193,11 +209,11 @@ public class Car implements Serializable {
         this.by2 = by2;
     }
 
-    public String getFueltype() {
-        return fueltype;
+    public Brand getBrand() {
+        return brand;
     }
 
-    public void setFueltype(String fueltype) {
-        this.fueltype = fueltype;
+    public void setBrand(Brand brand) {
+        this.brand = brand;
     }
 }

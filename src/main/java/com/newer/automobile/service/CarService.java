@@ -54,6 +54,54 @@ public class CarService {
         return carMapper.allprice(bid, ctype);
     }
 
+    //后台
+
+    /**
+     * 分页查询
+     * @param startIndex
+     * @param pageSize
+     * @return
+     */
+    public List<Car> carSel(int startIndex, int pageSize){
+        return carMapper.carSel(startIndex, pageSize);
+    }
+
+    /**
+     * 所有零件数量
+     * @return
+     */
+    public int count(){
+        return carMapper.count();
+    }
+
+    /**
+     * 添加零件
+     * @param car
+     * @return
+     */
+    public int carAdd(Car car){
+        return carMapper.carAdd(car);
+    }
+
+    /**
+     * 删除零件
+     * @param cid
+     * @return
+     */
+    public int carDel(Integer cid){
+        return carMapper.carDel(cid);
+    }
+
+    /**
+     * 修改零件
+     * @param car
+     * @return
+     */
+    public int carUpd(Car car){
+        return carMapper.carUpd(car);
+    }
+
+
     public List<Parameter> queryParameter(Integer cid){
         return carMapper.queryParameter(cid);
     }

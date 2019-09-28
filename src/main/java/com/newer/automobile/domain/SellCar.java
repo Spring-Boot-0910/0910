@@ -7,6 +7,7 @@ import java.util.Date;
 
 public class SellCar {
     private int scid;
+    private int uid;
     private String sc1;//车牌
     private String sc2;//车系
     private String sc3;//车型
@@ -21,12 +22,14 @@ public class SellCar {
     private String area;
     private String street;
     private String message;
+    private Users users;
 
     public SellCar() {
     }
 
-    public SellCar(int scid, String sc1, String sc2, String sc3, Date sctime, Double sckm, Double expectedPrice, String scimg, String province, String city, String area, String street, String message) {
+    public SellCar(int scid, int uid, String sc1, String sc2, String sc3, Date sctime, Double sckm, Double expectedPrice, String scimg, String province, String city, String area, String street, String message, Users users) {
         this.scid = scid;
+        this.uid = uid;
         this.sc1 = sc1;
         this.sc2 = sc2;
         this.sc3 = sc3;
@@ -39,6 +42,7 @@ public class SellCar {
         this.area = area;
         this.street = street;
         this.message = message;
+        this.users = users;
     }
 
     public int getScid() {
@@ -47,6 +51,14 @@ public class SellCar {
 
     public void setScid(int scid) {
         this.scid = scid;
+    }
+
+    public int getUid() {
+        return uid;
+    }
+
+    public void setUid(int uid) {
+        this.uid = uid;
     }
 
     public String getSc1() {
@@ -143,5 +155,13 @@ public class SellCar {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
     }
 }
