@@ -37,10 +37,10 @@ public class CarController {
 
     //遍历所有汽车
     @PostMapping("/queryCar")
-    public List<Car> queryCar(@RequestParam("crank")String crank,@RequestParam("startIndex") Integer startIndex,@RequestParam("pageSize") Integer pageSize, @RequestParam("cname")String cname, @RequestParam("ctype") String ctype,
+    public List<Car> queryCar(@RequestParam("bid") Integer bid,@RequestParam("crank")String crank,@RequestParam("startIndex") Integer startIndex,@RequestParam("pageSize") Integer pageSize, @RequestParam("cname")String cname, @RequestParam("ctype") String ctype,
                               @RequestParam("colour")String colour, @RequestParam("transmission")String transmission, @RequestParam("fueltype")String fueltype,
                               @RequestParam("startYear")String startYear, @RequestParam("endYear")String endYear, @RequestParam("minPrice")String minPrice, @RequestParam("maxPrice")String maxPrice){
-        return carService.queryCar(crank,startIndex,pageSize, cname, ctype, colour, transmission, fueltype, startYear, endYear, minPrice, maxPrice);
+        return carService.queryCar(bid,crank,startIndex,pageSize, cname, ctype, colour, transmission, fueltype, startYear, endYear, minPrice, maxPrice);
     }
 
     //获取总汽车数
@@ -87,5 +87,13 @@ public class CarController {
     public List<Parameter> queryParameter(@RequestParam("cid")Integer cid){
         List<Parameter> parameter = carService.queryParameter(cid);
         return parameter;
+    }
+
+    @PostMapping("/queryByParameter")
+    public Integer queryByParameter(@RequestParam("ctype")String ctype,@RequestParam("cprice")String cprice,@RequestParam("brand") Integer brand){
+        System.out.println(cprice+"---"+ctype+"---------"+brand);
+        int count =  carService.queryByParameter(ctype,cprice,brand);
+        System.out.println("0000000000"+count);
+        return count;
     }
 }

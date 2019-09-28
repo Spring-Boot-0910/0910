@@ -14,13 +14,13 @@ public class Parameter implements Serializable {
     private String BAG;
     private String CPA;
     private String ESPDSC;
-    private Integer seating;
+    private String seating;
     private Integer cid;
 
     public Parameter() {
     }
 
-    public Parameter(Integer pid, String pandt, String fuelEconome, String acceLerationTime, String maximuMspeed, String trunkolumve, String lwh, String ABS, String BAG, String CPA, String ESPDSC, Integer seating, Integer cid) {
+    public Parameter(Integer pid, String pandt, String fuelEconome, String acceLerationTime, String maximuMspeed, String trunkolumve, String lwh, String ABS, String BAG, String CPA, String ESPDSC, String seating, Integer cid) {
         this.pid = pid;
         this.pandt = pandt;
         this.fuelEconome = fuelEconome;
@@ -124,11 +124,11 @@ public class Parameter implements Serializable {
         this.ESPDSC = ESPDSC;
     }
 
-    public Integer getSeating() {
+    public String getSeating() {
         return seating;
     }
 
-    public void setSeating(Integer seating) {
+    public void setSeating(String seating) {
         this.seating = seating;
     }
 

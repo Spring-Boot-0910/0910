@@ -25,7 +25,7 @@ public interface CarMapper {
     public List<Car> specialCar();
 
     //遍历所有的车
-    public List<Car> queryCar(@Param("crank")String crank,@Param("startIndex")Integer startIndex,@Param("pageSize") Integer pageSize,@Param("cname")String cname,@Param("ctype") String ctype,
+    public List<Car> queryCar(@Param("bid") Integer bid,@Param("crank")String crank,@Param("startIndex")Integer startIndex,@Param("pageSize") Integer pageSize,@Param("cname")String cname,@Param("ctype") String ctype,
                               @Param("colour")String colour,@Param("transmission")String transmission,@Param("fueltype")String fueltype,
                               @Param("startYear")String startYear,@Param("endYear")String endYear,@Param("minPrice")String minPrice,@Param("maxPrice")String maxPrice);
 
@@ -59,4 +59,9 @@ public interface CarMapper {
     //根据cid查询parameter
     @Select("select * from parameter where cid = #{cid}")
     public List<Parameter> queryParameter(@Param("cid")Integer cid);
+
+    //三级联动查汽车
+    @Select("select cid from parameter where cid =(select cid from car where ctype=#{ctype} and cprice= #{cprice} and bid=#{brand})")
+    public Integer queryByParameter(@Param("ctype") String ctype,@Param("cprice") String cprice,@Param("brand")Integer brand);
+
 }

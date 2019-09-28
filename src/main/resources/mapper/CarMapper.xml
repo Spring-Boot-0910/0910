@@ -31,6 +31,9 @@
             <if test="minPrice!=null and minPrice!='' and maxPrice!=null and maxPrice!=''" >
                 and cprice between #{minPrice} and #{maxPrice}
             </if>
+            <if test="bid!=null and bid!=''" >
+                and bid = #{bid}
+            </if>
         </where>
         limit #{startIndex},#{pageSize}
     </select>

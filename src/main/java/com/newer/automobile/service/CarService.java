@@ -32,8 +32,8 @@ public class CarService {
     }
 
     //查询所有车
-    public List<Car> queryCar(String crank,Integer startIndex,Integer pageSize,String cname,String ctype,String colour,String transmission,String fueltype,String startYear,String endYear,String minPrice,String maxPrice){
-        return carMapper.queryCar(crank,startIndex, pageSize,cname, ctype, colour, transmission, fueltype, startYear, endYear, minPrice, maxPrice);
+    public List<Car> queryCar(Integer bid,String crank,Integer startIndex,Integer pageSize,String cname,String ctype,String colour,String transmission,String fueltype,String startYear,String endYear,String minPrice,String maxPrice){
+        return carMapper.queryCar(bid,crank,startIndex, pageSize,cname, ctype, colour, transmission, fueltype, startYear, endYear, minPrice, maxPrice);
     }
 
     //获取所有汽车数量
@@ -60,5 +60,9 @@ public class CarService {
 
     public List<Car> queryCarById(Integer cid){
         return carMapper.queryCarById(cid);
+    }
+
+    public Integer queryByParameter(String ctype,String cprice,Integer brand){
+        return carMapper.queryByParameter(ctype,cprice,brand);
     }
 }
