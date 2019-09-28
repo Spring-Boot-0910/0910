@@ -1,6 +1,7 @@
 package com.newer.automobile.controller;
 
 import com.newer.automobile.domain.Car;
+import com.newer.automobile.domain.Parameter;
 import com.newer.automobile.domain.Page;
 import com.newer.automobile.service.CarService;
 import net.sf.json.JSONArray;
@@ -49,18 +50,20 @@ public class CarController {
 
     //遍历所有汽车
     @PostMapping("/queryCar")
-    public List<Car> queryCar(@RequestParam("startIndex") Integer startIndex, @RequestParam("cname")String cname, @RequestParam("ctype") String ctype,
+    public List<Car> queryCar(@RequestParam("crank")String crank,@RequestParam("startIndex") Integer startIndex,@RequestParam("pageSize") Integer pageSize, @RequestParam("cname")String cname, @RequestParam("ctype") String ctype,
                               @RequestParam("colour")String colour, @RequestParam("transmission")String transmission, @RequestParam("fueltype")String fueltype,
                               @RequestParam("startYear")String startYear, @RequestParam("endYear")String endYear, @RequestParam("minPrice")String minPrice, @RequestParam("maxPrice")String maxPrice){
-        return carService.queryCar(startIndex, cname, ctype, colour, transmission, fueltype, startYear, endYear, minPrice, maxPrice);
+        return carService.queryCar(crank,startIndex,pageSize, cname, ctype, colour, transmission, fueltype, startYear, endYear, minPrice, maxPrice);
     }
 
     //获取总汽车数
     @PostMapping("/getCount")
-    public int getCount( @RequestParam("cname")String cname, @RequestParam("ctype") String ctype,
+    public int getCount(@RequestParam("crank")String crank, @RequestParam("cname")String cname, @RequestParam("ctype") String ctype,
                          @RequestParam("colour")String colour, @RequestParam("transmission")String transmission, @RequestParam("fueltype")String fueltype,
                          @RequestParam("startYear")String startYear, @RequestParam("endYear")String endYear, @RequestParam("minPrice")String minPrice, @RequestParam("maxPrice")String maxPrice){
-        return carService.getCount(cname, ctype, colour, transmission, fueltype, startYear, endYear, minPrice, maxPrice);
+        int count = carService.getCount(crank,cname, ctype, colour, transmission, fueltype, startYear, endYear, minPrice, maxPrice);
+        System.out.println("count="+count+"crank="+crank);
+        return  count;
     }
 
     /**
@@ -292,4 +295,18 @@ public class CarController {
         return new ResponseEntity<>(fluRows,HttpStatus.OK);
     }
 
+
+    //根据cid查询car信息
+    @PostMapping("/queryCarById")
+    public List<Car> queryCarById(@RequestParam("cid")Integer cid){
+        List<Car> list = carService.queryCarById(cid);
+        return list;
+    }
+
+    //根据cid查询parameter信息
+    @PostMapping("/queryParameter")
+    public List<Parameter> queryParameter(@RequestParam("cid")Integer cid){
+        List<Parameter> parameter = carService.queryParameter(cid);
+        return parameter;
+    }
 }

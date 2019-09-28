@@ -1,11 +1,13 @@
 package com.newer.automobile.mapper;
 
 import com.newer.automobile.domain.Car;
+import com.newer.automobile.domain.Parameter;
 import com.newer.automobile.domain.Users;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.springframework.data.mongodb.core.aggregation.ArrayOperators;
 
 
 public interface UsersMapper  {
@@ -31,6 +33,7 @@ public interface UsersMapper  {
     //修改密码
     @Update("update users set upwd = #{upwd} where uname = #{uname}")
     public int updPwd(@Param("upwd") String upwd,@Param("uname")String uname);
+
 
 }
 

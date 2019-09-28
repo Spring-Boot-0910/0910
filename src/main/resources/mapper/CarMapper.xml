@@ -29,7 +29,7 @@
     </resultMap>
 
     <select id="queryCar" resultType="com.newer.automobile.domain.Car">
-      select cimg,cprice,cname,pailiang,ctype,date_format(ctime, '%Y') ctime from car
+      select colour,cid,fuelEconomy,speed,transmission,fueltype,cimg,cprice,cname,pailiang,ctype,date_format(ctime, '%Y') ctime from car
         <where>
         <if test="cname!=null and cname!=''" >
             and cname like concat("%",concat(#{cname},"%"))
@@ -37,6 +37,9 @@
          <if test="ctype!=null and ctype!=''" >
               and ctype like concat("%",concat(#{ctype},"%"))
          </if>
+            <if test="crank!=null and crank!=''" >
+                and crank = #{crank}
+            </if>
             <if test="colour!=null and colour!=''" >
                 and colour like concat("%",concat(#{colour},"%"))
             </if>
@@ -47,13 +50,13 @@
                 and fueltype like concat("%",concat(#{fueltype},"%"))
             </if>
             <if test="startYear!=null and startYear!='' and endYear!=null and endYear!=''" >
-                and ctime like between startYear and endYear
+                and date_format(ctime, '%Y')  between #{startYear} and #{endYear}
             </if>
             <if test="minPrice!=null and minPrice!='' and maxPrice!=null and maxPrice!=''" >
-                and cprice like between minPrice and maxPrice
+                and cprice between #{minPrice} and #{maxPrice}
             </if>
         </where>
-        limit #{startIndex},12
+        limit #{startIndex},#{pageSize}
     </select>
 
     <select id="getCount" resultType="int">
@@ -65,8 +68,11 @@
             <if test="ctype!=null and ctype!=''" >
                 and ctype like concat("%",concat(#{ctype},"%"))
             </if>
+            <if test="crank!=null and crank!=''" >
+                and crank =#{crank}
+            </if>
             <if test="colour!=null and colour!=''" >
-                and colour like concat("%",concat(#{colour},"%"))
+                and colour   like concat("%",concat(#{colour},"%"))
             </if>
             <if test="transmission!=null and transmission!=''" >
                 and transmission like concat("%",concat(#{transmission},"%"))
@@ -75,10 +81,10 @@
                 and fueltype like concat("%",concat(#{fueltype},"%"))
             </if>
             <if test="startYear!=null and startYear!='' and endYear!=null and endYear!=''" >
-                and ctime like between startYear and endYear
+                and date_format(ctime, '%Y')  between #{startYear} and #{endYear}
             </if>
             <if test="minPrice!=null and minPrice!='' and maxPrice!=null and maxPrice!=''" >
-                and cprice like between minPrice and maxPrice
+                and cprice  between #{minPrice} and #{maxPrice}
             </if>
         </where>
     </select>

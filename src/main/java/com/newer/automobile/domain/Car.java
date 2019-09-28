@@ -31,6 +31,9 @@ public class Car implements Serializable {
     private Integer by2;
     private Brand brand;
 
+    public Car() {
+    }
+
     public Car(Integer cid, String cname, String cimg, String cimg2, String ctype, Double cprice, String discount, double mileage, Date ctime, String colour, String crank, Double speed, Double pailiang, String transmission, String fueltype, String fuelEconomy, Integer bid, String by1, Integer by2, Brand brand) {
         this.cid = cid;
         this.cname = cname;
@@ -52,9 +55,6 @@ public class Car implements Serializable {
         this.by1 = by1;
         this.by2 = by2;
         this.brand = brand;
-    }
-
-    public Car() {
     }
 
     public Integer getCid() {
